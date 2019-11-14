@@ -54,7 +54,7 @@ add_to_path () {
 SHELLTYPE="$(basename "/$SHELL")"
 if [[ $SHELLTYPE = "fish" ]]; then
   command fish -c 'set -U fish_user_paths $fish_user_paths ~/.serverless/bin'
-  printf "\n$yellow Added ~/.serverless/bin to fish_user_paths universal variable"
+  printf "\n$yellow Added ~/.serverless/bin to fish_user_paths universal variable$reset."
 elif [[ $SHELLTYPE = "zsh" ]]; then
   SHELL_CONFIG=$HOME/.zshrc
   if [ ! -r $SHELL_CONFIG ] || (! `grep -q '.serverless/bin' $SHELL_CONFIG`); then
