@@ -9,6 +9,7 @@ yellow="\033[33m"
 cyan="\033[36m"
 white="\033[37m"
 
+printf "\n$yellow Installing Serverless!$reset\n\n"
 
 # Detect platform
 if [[ $OSTYPE == "linux-gnu" ]]; then
@@ -36,7 +37,7 @@ LATEST_TAG=`curl -L --silent https://api.github.com/repos/serverless/serverless/
 BINARIES_DIR_PATH=$HOME/.serverless/bin
 BINARY_PATH=$BINARIES_DIR_PATH/serverless
 mkdir -p $BINARIES_DIR_PATH
-echo " Downloading binary..."
+printf "$yellow Downloading binary...$reset\n"
 curl -L -o $BINARY_PATH https://github.com/serverless/serverless/releases/download/$LATEST_TAG/serverless-$PLATFORM-$ARCH
 chmod +x $BINARY_PATH
 
