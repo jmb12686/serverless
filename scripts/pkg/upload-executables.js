@@ -83,7 +83,7 @@ const releaseAssetsDeferred = releaseIdDeferred.then(releaseId =>
       if (!distFileBasenameTokens) throw new Error(`Unexpected dist file ${distFileBasename}`);
       const targetBinaryName = `serverless-${
         distFileBasenameTokens[1]
-      }-${distFileBasenameTokens[2] || 'x64'}${distFileBasenameTokens[2] || ''}`;
+      }-${distFileBasenameTokens[2] || 'x64'}${distFileBasenameTokens[3] || ''}`;
       const existingAssetData = (await releaseAssetsDeferred).find(
         assetData => assetData.name === targetBinaryName
       );
