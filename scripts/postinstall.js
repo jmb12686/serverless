@@ -18,13 +18,20 @@ if (!truthyStr(CI) && !truthyStr(ADBLOCK) && !truthyStr(SILENT)) {
   } else {
     messageTokens.push('To start your first project run “serverless”.');
   }
-  process.stdout.write(
-    `${boxen(chalk.yellow(messageTokens.join('\n\n')), {
-      padding: 1,
-      margin: 1,
-      borderColor: 'yellow',
-    })}\n`
-  );
+  const message = messageTokens.join('\n\n');
+  if (isStandaloneExecutable && isWindows) {
+    process.stdout.write(
+      `${
+        isStandaloneExecutable && isWindows
+          ? message
+          : boxen(chalk.yellow(message), {
+              padding: 1,
+              margin: 1,
+              borderColor: 'yellow',
+            })
+      }\n`
+    );
+  }
 }
 
 try {
