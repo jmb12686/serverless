@@ -48,8 +48,7 @@ ln -sf serverless $BINARIES_DIR_PATH/sls
 SOURCE_STR="export PATH=\"\$HOME/.serverless/bin:\$PATH\"\n"
 add_to_path () {
   command printf "\n$SOURCE_STR" >> "$1"
-  printf "\n$yellow Added the following to $1:"
-  echo " $SOURCE_STR$reset"
+  printf "\n$yellow Added the following to $1: $SOURCE_STR$reset"
 }
 SHELLTYPE="$(basename "/$SHELL")"
 if [[ $SHELLTYPE = "fish" ]]; then
