@@ -19,19 +19,17 @@ if (!truthyStr(CI) && !truthyStr(ADBLOCK) && !truthyStr(SILENT)) {
     messageTokens.push('To start your first project run “serverless”.');
   }
   const message = messageTokens.join('\n\n');
-  if (isStandaloneExecutable && isWindows) {
-    process.stdout.write(
-      `${
-        isStandaloneExecutable && isWindows
-          ? message
-          : boxen(chalk.yellow(message), {
-              padding: 1,
-              margin: 1,
-              borderColor: 'yellow',
-            })
-      }\n`
-    );
-  }
+  process.stdout.write(
+    `${
+      isStandaloneExecutable && isWindows
+        ? message
+        : boxen(chalk.yellow(message), {
+            padding: 1,
+            margin: 1,
+            borderColor: 'yellow',
+          })
+    }\n`
+  );
 }
 
 try {
