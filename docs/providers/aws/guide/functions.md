@@ -41,6 +41,7 @@ functions:
     runtime: python2.7 # optional overwrite, default is provider runtime
     memorySize: 512 # optional, in MB, default is 1024
     timeout: 10 # optional, in seconds, default is 6
+    provisionedConcurrency: 3 # optional, Count of provisioned lambda instances
     reservedConcurrency: 5 # optional, reserved concurrency limit for this function. By default, AWS uses account concurrency limit
     tracing: PassThrough # optional, overwrite, can be 'Active' or 'PassThrough'
 ```
@@ -458,4 +459,19 @@ functions:
   goodbye:
     handler: handler.goodbye
     tracing: PassThrough
+```
+
+## Destinations
+
+When intention is to invoke function asynchronously you may want to configure [destination targets](https://docs.aws.amazon.com/lambda/latest/dg/invocation-async.html#invocation-async-destinations) for it.
+
+Target can be the other lambdas you also deploy with a service or other qualified target (externally managed lambda, EventBridge event bus, SQS queue or SNS topic) which you can address via its ARN
+
+```yml
+functions:
+  asyncHello:
+    handler: handler.asyncHello
+    destinations:
+      onSuccess: otherFunctionInService
+      onFailure: arn:aws:sns:us-east-1:xxxx:some-topic-name
 ```

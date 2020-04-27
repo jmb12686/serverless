@@ -8,6 +8,11 @@
 [![Known Vulnerabilities](https://snyk.io/test/github/serverless/serverless/badge.svg)](https://snyk.io/test/github/serverless/serverless)
 [![license](https://img.shields.io/npm/l/serverless.svg)](https://www.npmjs.com/package/serverless)
 
+<p align="center">
+  <span>English</span> |
+  <a href="./README_CN.md">简体中文</a>
+</p>
+
 [Website](http://www.serverless.com) • [Docs](https://serverless.com/framework/docs/) • [Newsletter](https://serverless.com/subscribe/) • [Swag](https://teespring.com/stores/serverless) • [Gitter](https://gitter.im/serverless/serverless) • [Forum](http://forum.serverless.com) • [Meetups](https://www.meetup.com/pro/serverless/) • [Twitter](https://twitter.com/goserverless) • [We're Hiring](https://serverless.com/company/jobs/) • [Try Pro](https://dashboard.serverless.com)
 
 **The Serverless Framework** – Build applications comprised of microservices that run in response to events, auto-scale for you, and only charge you when they run. This lowers the total cost of maintaining your apps, enabling you to build more logic, faster.
@@ -18,7 +23,10 @@ Serverless is an MIT open-source project, actively maintained by a full-time, ve
 
 <a href="https://www.youtube.com/watch?v=-Nf0ui3qP2E" target="_blank">Watch the video overview here.</a>
 
-[![serverless components notice](https://s3.amazonaws.com/assets.github.serverless/announcement-serverless-components-3.gif)](https://github.com/serverless/components)
+In 2020, the Serverless Framework began introducing advanced functionality for specific serverless use-cases, known as Serverless Framework Components.  Check out the Components featured below, [and more here](https://github.com/serverless-components).
+
+| [![serverless framework express.js](https://s3.amazonaws.com/public.assets.serverless.com/images/ads/ad-components-express.png)](https://github.com/serverless-components/express) | [![serverless framework website](https://s3.amazonaws.com/public.assets.serverless.com/images/ads/ad-components-website.png)](https://github.com/serverless-components/website) | [![serverless framework dynamodb](https://s3.amazonaws.com/public.assets.serverless.com/images/ads/ad-components-dynamodb.png)](https://github.com/serverless-components/aws-dynamodb) |
+| --- | --- | --- |
 
 ## Contents
 

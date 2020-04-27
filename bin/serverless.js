@@ -2,6 +2,16 @@
 
 'use strict';
 
+const isStandaloneExecutable = require('../lib/utils/isStandaloneExecutable');
+
+if (isStandaloneExecutable) {
+  require('../lib/utils/standalone-patch');
+  if (process.argv[2] === 'binary-postinstall' && process.argv.length === 3) {
+    require('../scripts/postinstall');
+    return;
+  }
+}
+
 // global graceful-fs patch
 // https://github.com/isaacs/node-graceful-fs#global-patching
 const realFs = require('fs');
@@ -13,14 +23,21 @@ const userNodeVersion = Number(process.version.split('.')[0].slice(1));
 
 // only check for components if user is running Node 8
 if (userNodeVersion >= 8) {
-  const serverlessCli = require('@serverless/cli');
-  if (serverlessCli.runningComponents()) {
-    serverlessCli.runComponents();
+  const componentsV1 = require('../lib/components-v1');
+  const componentsV2 = require('../lib/components-v2');
+
+  if (componentsV1 && componentsV1.runningComponents()) {
+    componentsV1.runComponents();
+    return;
+  }
+
+  if (componentsV2 && componentsV2.runningComponents()) {
+    componentsV2.runComponents();
     return;
   }
 }
 
-Error.stackTraceLimit = Infinity;
+require('essentials');
 
 const autocomplete = require('../lib/utils/autocomplete');
 const BbPromise = require('bluebird');
@@ -37,13 +54,6 @@ if (process.env.SLS_DEBUG) {
 
 process.on('uncaughtException', error => logError(error, { forceExit: true }));
 
-process.on('unhandledRejection', error => {
-  if (process.listenerCount('unhandledRejection') > 1) {
-    // User attached its own unhandledRejection handler, abort
-    return;
-  }
-  throw error;
-});
 process.noDeprecation = true;
 
 if (require('../lib/utils/tabCompletion/isSupported') && process.argv[2] === 'completion') {
